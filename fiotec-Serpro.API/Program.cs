@@ -3,9 +3,17 @@ using fiotec_Serpro.API.Middlewares;
 using fiotec_Serpro.Application.Extensions;
 using fiotec_Serpro.Infra.Services.Interfaces;
 using fiotec_Serpro.Infra.Services.Services;
+using Serilog;
 using System.Net.Http.Headers;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Configura Serilog via appsettings.json
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .CreateLogger();
+
+builder.Host.UseSerilog();
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -43,7 +51,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Fiotec - Serpro API - Consulta de CPF v1");
-        c.RoutePrefix = string.Empty; // abre o Swagger direto na raiz
+        c.RoutePrefix = string.Empty;
     });
 }
 

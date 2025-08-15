@@ -1,5 +1,6 @@
 ﻿using fiotec_Serpro.Domain.Exceptions;
 using Newtonsoft.Json;
+using Serilog;
 using System.Net;
 
 namespace fiotec_Serpro.API.Middlewares
@@ -14,6 +15,10 @@ namespace fiotec_Serpro.API.Middlewares
             }
             catch (Exception ex)
             {
+                // Log da exceção
+                Log.Error(ex, "Ocorreu um erro ao processar a requisição {Method} {Path}",
+                          context.Request.Method, context.Request.Path);
+
                 await HandleExceptionAsync(context, ex);
             }
         }
