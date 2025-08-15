@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36408.4 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fiotec-Serpro.API", "fiotec-Serpro.API\fiotec-Serpro.API.csproj", "{E83862FD-CC52-4263-B20E-81C90CA0E9CC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{DE034C9A-F59F-431F-B77D-5EB61D270A8D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Application", "2 - Application", "{7655C2A1-C256-423A-BED7-BEE1EE79FBD1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", "{AFD2F007-10A0-4045-8931-4D59D901C028}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{F2FCC58B-9AFD-49DE-8E56-A97C12EBB78B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fiotec-Serpro.Application", "fiotec-Serpro.Application\fiotec-Serpro.Application.csproj", "{3D7FE8B9-701D-4B9F-912D-E0DAF1AC3D1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fiotec-Serpro.Domain", "fiotec-Serpro.Domain\fiotec-Serpro.Domain.csproj", "{AEBCD848-6755-426E-BD84-AC602F656858}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fiotec-Serpro.Infra.Services", "fiotec-Serpro.Infra.Services\fiotec-Serpro.Infra.Services.csproj", "{89141CFA-D72E-40B5-A3C6-1C5FE6E90BC6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E83862FD-CC52-4263-B20E-81C90CA0E9CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E83862FD-CC52-4263-B20E-81C90CA0E9CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E83862FD-CC52-4263-B20E-81C90CA0E9CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E83862FD-CC52-4263-B20E-81C90CA0E9CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D7FE8B9-701D-4B9F-912D-E0DAF1AC3D1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D7FE8B9-701D-4B9F-912D-E0DAF1AC3D1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D7FE8B9-701D-4B9F-912D-E0DAF1AC3D1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D7FE8B9-701D-4B9F-912D-E0DAF1AC3D1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEBCD848-6755-426E-BD84-AC602F656858}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEBCD848-6755-426E-BD84-AC602F656858}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEBCD848-6755-426E-BD84-AC602F656858}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEBCD848-6755-426E-BD84-AC602F656858}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89141CFA-D72E-40B5-A3C6-1C5FE6E90BC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89141CFA-D72E-40B5-A3C6-1C5FE6E90BC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89141CFA-D72E-40B5-A3C6-1C5FE6E90BC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89141CFA-D72E-40B5-A3C6-1C5FE6E90BC6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E83862FD-CC52-4263-B20E-81C90CA0E9CC} = {DE034C9A-F59F-431F-B77D-5EB61D270A8D}
+		{DE034C9A-F59F-431F-B77D-5EB61D270A8D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{7655C2A1-C256-423A-BED7-BEE1EE79FBD1} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{AFD2F007-10A0-4045-8931-4D59D901C028} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{F2FCC58B-9AFD-49DE-8E56-A97C12EBB78B} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{3D7FE8B9-701D-4B9F-912D-E0DAF1AC3D1D} = {7655C2A1-C256-423A-BED7-BEE1EE79FBD1}
+		{AEBCD848-6755-426E-BD84-AC602F656858} = {AFD2F007-10A0-4045-8931-4D59D901C028}
+		{89141CFA-D72E-40B5-A3C6-1C5FE6E90BC6} = {F2FCC58B-9AFD-49DE-8E56-A97C12EBB78B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1CCCA9BC-CF55-4C1F-8D4D-901103729911}
+	EndGlobalSection
+EndGlobal
