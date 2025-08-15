@@ -23,7 +23,7 @@ namespace fiotec_Serpro.Infra.Services.Services
             if (token == null || string.IsNullOrEmpty(token.access_token))
             {
                 Log.Error("Não foi possível obter token do SERPRO.");
-                throw new ServicoIndisponivelException("Não foi possível obter token do SERPRO.");
+                throw new TokenInvalidoException("Não foi possível obter token do SERPRO.");
             }
 
             var payload = new
@@ -60,7 +60,7 @@ namespace fiotec_Serpro.Infra.Services.Services
             catch (Exception ex)
             {
                 Log.Error(ex, "Erro ao tentar se conectar ao SERPRO para CPF {Cpf}", cpf);
-                throw new ServicoIndisponivelException("Erro ao tentar se conectar ao SERPRO.", ex);
+                throw new ConexaoSerproException("Erro ao tentar se conectar ao SERPRO.", ex);
             }
 
             if (!response.IsSuccessStatusCode)
@@ -93,7 +93,7 @@ namespace fiotec_Serpro.Infra.Services.Services
             catch (Exception ex)
             {
                 Log.Error(ex, "Erro ao tentar obter token do SERPRO");
-                return null;
+                throw new TokenInvalidoException("Não foi possível se conectar ao SERPRO para obter o token.", ex);
             }
 
             if (response.IsSuccessStatusCode)
@@ -105,7 +105,7 @@ namespace fiotec_Serpro.Infra.Services.Services
             }
 
             Log.Warning("Falha ao obter token do SERPRO. StatusCode: {StatusCode}", response.StatusCode);
-            return null;
+            throw new TokenInvalidoException($"Falha ao obter token do SERPRO. StatusCode: {response.StatusCode}");
         }
     }
 }
