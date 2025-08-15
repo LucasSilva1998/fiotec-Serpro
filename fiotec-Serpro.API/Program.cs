@@ -1,4 +1,5 @@
 using fiotec_Serpro.API.Extensions;
+using fiotec_Serpro.Application.Extensions;
 using fiotec_Serpro.Infra.Services.Interfaces;
 using fiotec_Serpro.Infra.Services.Services;
 using System.Net.Http.Headers;
@@ -7,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
+
+// Application Services 
+builder.Services.AddApplicationServices();
 
 // Swagger
 builder.Services.AddSwaggerDocumentation();

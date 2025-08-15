@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\fiotec-Serpro.Domain\fiotec-Serpro.Domain.csproj" />
+    <ProjectReference Include="..\fiotec-Serpro.Infra.Services\fiotec-Serpro.Infra.Services.csproj" />
+  </ItemGroup>
+
 </Project>
