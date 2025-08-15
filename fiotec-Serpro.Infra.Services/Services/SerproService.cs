@@ -1,4 +1,5 @@
-﻿using fiotec_Serpro.Infra.Services.Interfaces;
+﻿using fiotec_Serpro.Domain.Exceptions;
+using fiotec_Serpro.Infra.Services.Interfaces;
 using fiotec_Serpro.Infra.Services.Models;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -12,12 +13,12 @@ using System.Threading.Tasks;
 namespace fiotec_Serpro.Infra.Services.Services
 {
     public class SerproService(IConfiguration _configuration, IHttpClientFactory _httpClient) : ISerproService
-    {     
+    {
         public async Task<RetornoDataValid?> ValidaCPFSerpro(string cpf)
         {
             var token = await GetTokenSerproAsync();
             if (token == null || string.IsNullOrEmpty(token.access_token))
-                throw new Exception("Não foi possível obter token do SERPRO");
+                throw new ServicoIndisponivelException("Não foi possível obter token do SERPRO.");
 
             var payload = new
             {
@@ -42,15 +43,21 @@ namespace fiotec_Serpro.Infra.Services.Services
             var content = new StringContent(JsonSerializer.Serialize(payload), Encoding.UTF8, "application/json");
             var endpoint = _configuration["Serpro:dataValidEndpoint"];
 
-            var response = await client.PostAsync(endpoint, content);
-
-            if (response.IsSuccessStatusCode)
+            HttpResponseMessage response;
+            try
             {
-                var result = await response.Content.ReadAsStringAsync();
-                return JsonSerializer.Deserialize<RetornoDataValid>(result);
+                response = await client.PostAsync(endpoint, content);
+            }
+            catch (Exception ex)
+            {
+                throw new ServicoIndisponivelException("Erro ao tentar se conectar ao SERPRO.", ex);
             }
 
-            return null;
+            if (!response.IsSuccessStatusCode)
+                throw new ServicoIndisponivelException($"Serviço do SERPRO retornou status {response.StatusCode}.");
+
+            var result = await response.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<RetornoDataValid>(result);
         }
 
         private async Task<RetornoToken?> GetTokenSerproAsync()

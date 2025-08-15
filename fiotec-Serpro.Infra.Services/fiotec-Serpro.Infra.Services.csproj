@@ -14,4 +14,8 @@
     <PackageReference Include="System.ServiceModel.Http" Version="8.1.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\fiotec-Serpro.Domain\fiotec-Serpro.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
