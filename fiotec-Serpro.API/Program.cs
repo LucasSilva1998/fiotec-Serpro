@@ -1,4 +1,5 @@
 using fiotec_Serpro.API.Extensions;
+using fiotec_Serpro.API.Middlewares;
 using fiotec_Serpro.Application.Extensions;
 using fiotec_Serpro.Infra.Services.Interfaces;
 using fiotec_Serpro.Infra.Services.Services;
@@ -31,6 +32,9 @@ builder.Services.AddHttpClient("SerproAuth", client =>
 builder.Services.AddScoped<ISerproService, SerproService>();
 
 var app = builder.Build();
+
+// Middlewares
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
