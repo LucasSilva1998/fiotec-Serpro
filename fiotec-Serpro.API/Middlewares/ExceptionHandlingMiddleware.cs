@@ -5,19 +5,28 @@ using System.Net;
 
 namespace fiotec_Serpro.API.Middlewares
 {
-    public class ExceptionHandlingMiddleware(RequestDelegate next)
-    {     
+    public class ExceptionHandlingMiddleware
+    {
+        private readonly RequestDelegate _next;
+
+        public ExceptionHandlingMiddleware(RequestDelegate next)
+        {
+            _next = next;
+        }
+
         public async Task InvokeAsync(HttpContext context)
         {
             try
             {
-                await next(context);
+                await _next(context);
             }
             catch (Exception ex)
             {
-                // Log da exceção
-                Log.Error(ex, "Ocorreu um erro ao processar a requisição {Method} {Path}",
-                          context.Request.Method, context.Request.Path);
+                // Log estruturado da exceção
+                Log.Error(ex, "Erro ao processar requisição {Method} {Path} {QueryString}",
+                    context.Request.Method,
+                    context.Request.Path,
+                    context.Request.QueryString);
 
                 await HandleExceptionAsync(context, ex);
             }
@@ -35,7 +44,9 @@ namespace fiotec_Serpro.API.Middlewares
 
             var response = new
             {
-                erro = exception.Message
+                status = context.Response.StatusCode,
+                erro = exception.Message,
+                timestamp = DateTime.UtcNow
             };
 
             return context.Response.WriteAsync(JsonConvert.SerializeObject(response));
